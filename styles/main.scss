@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Josefin+Sans:wght@300&display=swap');
+@import 'variables';
+@import 'base';
+@import 'mixins';
+
+nav ul {
+    justify-content: space-between;
+    gap: 16px;
+    color: $white;
+
+    li {
+        font-weight: 700;
+        cursor: pointer;
+
+        &::after {
+            content: '';
+            width: 50%;
+            height: 2px;
+            background-color: $white;
+            display: block;
+            margin: 8px auto 0;
+            opacity: 0;
+        }
+
+        &:hover::after {
+            opacity: 1;
+        }
+    }
+}
+
+.hero {
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 10%, rgba(0, 0, 0, 0.3) 90%), url('./../images/mobile/image-hero.jpg');
+    background-size: cover;
+    padding: 60px 0 140px;
+    height: 750px;
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        nav {
+            display: none;
+        }
+    }
+
+    h1 {
+        border: 2px solid $white;
+        color: $white;
+        font-size: 3.5rem;
+        line-height: 1.2;
+        margin: 140px 0 0;
+        padding: 16px 24px;
+        text-transform: uppercase;
+    }
+}
+
+.interactive-vr {
+    margin: 140px auto;
+    position: relative;
+
+    img {
+        margin-bottom: 40px;
+    }
+
+    > div {
+        text-align: center;
+
+        h2 {
+            margin: 0 0 24px;
+        }
+
+        p {
+            margin: 0;
+            font-size: 1.5rem;
+            color: $darkGray;
+            line-height: 1.5;
+        }
+    }
+}
+
+.our-creations {
+    margin-bottom: 140px;
+    display: flex;
+    flex-wrap: wrap;
+
+    h2 {
+        margin-bottom: 48px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .link-wrapper {
+        width: 100%;
+        order: 3;
+        text-align: center;
+        margin-top: 30px;
+
+        a {
+            border: 1px solid $black;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: $black;
+            padding: 8px 24px;
+            font-size: 1rem;
+    
+            &:hover {
+                background-color: $black;
+                color: $white;
+            }
+        }
+    }
+
+    .creations {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 30px;
+        width: 100%;
+
+        a {
+            text-decoration: none;
+        }
+
+        article {
+            width: 100%;
+            height: 240px;
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+
+            h3 {
+                margin: 0;
+                font-size: 2rem;
+                color: $white;
+                text-transform: uppercase;
+            }
+        }
+
+        @include load-images('mobile');
+    }
+}
+
+footer {
+    background-color: $black;
+    color: $white;
+    padding: 40px 0;
+    text-align: center;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        order: 3;
+    }
+
+    nav {
+        order: 2;
+        ul {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    p {
+        color: $veryDarkGray;
+        margin: 0;
+        order: 4;
+    }
+}
+
+@media screen and (min-width: 660px) {
+    html {
+        font-size: 14px;
+    }
+
+    .hero {
+        background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 10%, rgba(0, 0, 0, 0.3) 90%), url('./../images/desktop/image-hero.jpg');
+        background-position: center;
+        height: auto;
+
+        header {
+            nav {
+                display: block;
+            }
+    
+            .hamburger-menu {
+                display: none;
+            }
+        }
+    }
+
+    .our-creations .creations {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    footer {
+        text-align: left;
+
+        .container {
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: wrap;
+    
+            > * {
+                width: 50%;
+    
+                &:nth-child(even) {
+                    display: flex;
+                    justify-content: flex-end;
+                }
+            }
+
+            .social-links {
+                order: 2;
+            }
+    
+            nav {
+                order: 3;
+                ul {
+                    width: 80%;
+                    flex-direction: row;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 860px) {
+    html {
+        font-size: 16px;
+    }
+
+    .hero h1 {
+        width: 60%;
+    }
+
+    .interactive-vr {
+        img {
+            margin-bottom: 0;
+        }
+
+        > div {
+            position: absolute;
+            right: 30px;
+            bottom: 0;
+            width: 50%;
+            background-color: $white;
+            padding: 40px 0 0 40px;
+            text-align: left;
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .our-creations {
+        h2 {
+            width: 80%;
+            order: 1;
+            text-align: left;
+        }
+
+        .link-wrapper {
+            width: 20%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+            order: 2;
+            text-align: left;
+            margin-top: 0;
+        }
+
+        .creations {
+            order: 3;
+            grid-template-columns: repeat(3, 1fr);
+
+            article {
+                height: 450px;
+            }
+
+            @include load-images('desktop');
+        }
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .interactive-vr > div {
+        padding: 80px 0 0 80px;
+    }
+
+    .our-creations .creations {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .container {
+        width: 1100px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0;
+    }
+
+    .interactive-vr > div {
+        right: 0;
+    }
+}
